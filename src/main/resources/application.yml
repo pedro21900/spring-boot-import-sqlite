@@ -1,0 +1,45 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 4MB
+      max-request-size: 4MB
+  h2:
+    console.enabled: true
+  datasource:
+    url: "jdbc:h2:~/labs-db/sbiq"
+    driver-class-name: "org.h2.Driver"
+    username: "horizon"
+    password: "horizon"
+    hikari:
+      maxLifetime: 30000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        use_sql_comments: true
+        format_sql: true
+        show-sql: true
+        ddl-auto: update
+  jackson:
+    mapper:
+      default-view-inclusion: true
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+info:
+  app:
+    name: '@project.name@'
+logging:
+  level:
+    br:
+      jus: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql: DEBUG
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG
