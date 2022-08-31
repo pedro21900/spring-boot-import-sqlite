@@ -36,7 +36,7 @@ public class Cultura {
 
     private Boolean sqlDeleted;
 
-    private Timestamp lastModified;
+    private Integer lastModified;
 
     // @OneToMany(fetch = FetchType.LAZY,
     // cascade = {CascadeType.ALL},

@@ -95,11 +95,12 @@ public class SyncDumpService {
             for (Integer i = 0; i < syncDumpItem.getValues().size(); i++) {
                 Map<String, Object> cultura = new HashMap<>();
                 for (Integer j = 0; j < syncDumpItem.getValues().get(i).length; j++) {
-                    String nameColumnCamelCase = CaseUtils.toCamelCase(syncDumpItem.getSchema().get(j).getColumn(), false, new char[]{'_'});
+                    String nameColumnCamelCase="";
+                    if(Objects.nonNull(syncDumpItem)){
+                        nameColumnCamelCase= CaseUtils.toCamelCase(syncDumpItem.getSchema().get(j).getColumn(), false, new char[]{'_'});}
                     if (syncDumpItem.getSchema().get(j).getColumn().equals("last_modified")) {
-                        if(syncDumpItem.getValues().get(i)[j].equals("2022-08-30T23:11:56.000+00:00")){}
-                        Timestamp timestamp=Timestamp.from(Instant.ofEpochMilli(Long.parseLong(syncDumpItem.getValues().get(i)[j].toString())));
-                        cultura.put(nameColumnCamelCase, timestamp);
+                       // Timestamp timestamp=Timestamp.from(Instant.ofEpochMilli(Long.parseLong(syncDumpItem.getValues().get(i)[j].toString())));
+                        cultura.put(nameColumnCamelCase, syncDumpItem.getValues().get(i)[j]);
                     } else cultura.put(nameColumnCamelCase, syncDumpItem.getValues().get(i)[j]);
 
                 }
